@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Performance AI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* NAVBAR */
+nav {
+    background: #0f172a;
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 {
+    font-size: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+nav ul li:hover {
+    opacity: 1;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* MAIN SECTION */
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    width: 420px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #0f172a;
+}
+
+/* INPUTS */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #4f46e5;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #3730a3;
+}
+
+/* RESULT */
+.result {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #16a34a;
+    text-align: center;
+    background: #f0fdf4;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #bbf7d0;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h1>AI Student Predictor</h1>
+    <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Model</li>
+        <li>Contact</li>
+    </ul>
+</nav>
+
+<div class="hero">
+    <h2>Predict Your CGPA Using AI</h2>
+    <p>Smart machine learning model to analyze student performance</p>
+</div>
+
+<div class="container">
+    <div class="card">
+        <h3>Enter Student Details</h3>
+
+        <form action="/predict" method="post">
+
+            <input type="text" name="study_hours" placeholder="Study Hours per Day (e.g. 5 or 5-6 hours)" required>
+
+            <input type="text" name="sleep_hours" placeholder="Sleep Hours" required>
+
+            <input type="text" name="attendance" placeholder="Attendance %" required>
+
+            <input type="text" name="coding_hours" placeholder="Coding Hours per Day" required>
+
+            <input type="text" name="social_media" placeholder="Social Media Usage (e.g. High/Low or Hours)" required>
+
+            <input type="text" name="participation" placeholder="Class Participation" required>
+
+            <button type="submit">Predict CGPA</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<footer>
+    © 2026 AI Student Performance Predictor | Built with Flask & Machine Learning
+</footer>
+
+</body>
+</html>
